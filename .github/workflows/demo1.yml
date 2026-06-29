@@ -4,6 +4,14 @@ on:
     types:
       - opened
   workflow_dispatch:
+  push:
+    branches:
+      - main # This will trigger the workflow for the main branch
+      - "dev-*" # This will trigger the workflow for any branch that starts with "dev-"
+      - "feature/*" # This will trigger the workflow for any branch that starts with "feature/*"
+      - "feat/**" # This will trigger the workflow for any branch that starts with "feat/**"
+    paths-ignore:
+      - ".github/workflows/*"
 jobs:
   deploy:
     runs-on: ubuntu-latest
